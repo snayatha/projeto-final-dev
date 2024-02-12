@@ -1,0 +1,49 @@
+header
+{
+    width: 100%;
+    height: 135px;
+    display: flex;
+    background-color: #C1D9A9;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.botaoheader {
+    display: inline-flex;
+    text-align: center;
+    background-color:transparent;
+    border: transparent;
+    text-shadow: 20px;
+    color:black;
+    margin-right: 50px;
+    font-size: 30px;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+}
+
+body {  
+    background: rgb(118,166,46);
+    background: linear-gradient(270deg, rgba(118,166,46,1) 0%, rgba(135,191,52,1) 35%, rgba(152,217,54,1) 100%);
+}
+.bemvindo1  {
+    display: flex;
+    color: #F2F2F2;
+    justify-content: center ;
+    flex-direction: column;
+    align-items: center;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+    font-size: 20px;
+}
+.bemvindo2 {
+    display: flex;
+    color: #F2F2F2;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+
+    font-size: 40px;
+}
