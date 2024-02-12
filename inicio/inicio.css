@@ -1,49 +1,141 @@
-header
+html {
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+}
+#header
 {
     width: 100%;
     height: 135px;
-    display: flex;
     background-color: #C1D9A9;
     padding: 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    flex-direction: row;
 }
 
-.botaoheader {
-    display: inline-flex;
-    text-align: center;
-    background-color:transparent;
-    border: transparent;
-    text-shadow: 20px;
-    color:black;
-    margin-right: 50px;
-    font-size: 30px;
-    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+.container {
+    height: 200px; /* Altura do contêiner */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Apenas para visualização */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    text-decoration: none; 
+    color: black; 
+    font-size: 40px;
+}
+
+ul li {
+    margin-right: 100px;
+}
+
+li {
+    list-style-type: none;
+
 }
 
 body {  
     background: rgb(118,166,46);
     background: linear-gradient(270deg, rgba(118,166,46,1) 0%, rgba(135,191,52,1) 35%, rgba(152,217,54,1) 100%);
 }
-.bemvindo1  {
-    display: flex;
-    color: #F2F2F2;
-    justify-content: center ;
-    flex-direction: column;
-    align-items: center;
-    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-    font-size: 20px;
-}
-.bemvindo2 {
-    display: flex;
-    color: #F2F2F2;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
 
-    font-size: 40px;
+#home {
+    color:white;
+}
+
+.texto {
+    text-align: center;
+    font-size: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border-radius: 30px;
+    border: solid rgb(2, 0, 5);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+    transition-property: background-color, color;
+    text-decoration: none; 
+    position: relative;
+    overflow: hidden;
+    transition:color 0.3s;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-image: url(imagens/chicken-chicken-bro.gif);
+    background-size: cover;
+    background-position: center;
+    transform: translate(-50%, -50%) scale(1.5);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.btn:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.container-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; /* Ajuste conforme necessário */
+}
+.btn:hover {
+    color: transparent;
+    font-size: 60px;
+}
+
+.titulo {
+    font-size: 45px;
+    color: white;
+    justify-content: center;
+    display: flex;
+    margin-top: 130px;
+    margin-bottom: 100px;
+}
+
+#about  {
+    color: white;
+}
+
+.textofundo {
+    justify-content: start;
+    font-size: 30px;
+    margin-top: 220px;
+}
+
+#footer {
+    color: white;
+}
+
+#botao {
+   color: white;
 }
