@@ -13,6 +13,18 @@ let incorrect = 'incorrect'
 let active = 'active'
 
 
+function gameProgress(progress) {
+    if (progress >0 ){
+        percentProgress += progress
+        progressElement.style.width = percentProgress +"%"
+
+    }else {
+        percentProgress = progress
+        progressElement.style.width = percentProgress +"%"
+    }
+}
+
+
 function showResult(text, classElement) {
     result.classList.add(classElement);
     result.textContent = text
@@ -27,6 +39,7 @@ function checkAnswer(value, element) {
             showResult('Fim você ganhou');
             indexQuestion = 0;
             startCounter()
+            gameProgress(20)
             setTimeout(() => {
                 showResult('');
                 element.classList.remove(correct);
@@ -36,6 +49,7 @@ function checkAnswer(value, element) {
         } else {
             element.classList.add(correct);
             setTimeout(() => {
+                gameProgress(20)
                 ++indexQuestion;
                 element.classList.remove(correct)
                 questionList()
@@ -44,6 +58,7 @@ function checkAnswer(value, element) {
     } else {
         element.classList.add(incorrect);
         setTimeout(() => {
+            gameProgress(0)
             indexQuestion = 0;
             element.classList.remove(incorrect);
             questionList();
@@ -88,6 +103,7 @@ function questionList() {
     if (indexQuestion === 0) {
         shuffleArray(questions);
         percentProgress = 0;
+        gameProgress(0)
     }
     score.textContent = `${indexQuestion}/${questions.length}`
     question.textContent = questions[indexQuestion].question
@@ -113,3 +129,5 @@ function startCounter() {
     }
     updateCounter();
 }
+
+
