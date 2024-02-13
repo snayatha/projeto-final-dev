@@ -11,7 +11,18 @@ let indexQuestion = 0;
 let correct = 'correct'
 let incorrect = 'incorrect'
 let active = 'active'
+let name = localStorage.getItem("name")
 
+
+function username (){
+if (name ) user.textContent = `Jogador(a): ${name}`
+else {
+    name = prompt("Digite seu nome")
+    user.textContent = `Jogador(a): ${name}`
+    localStorage.setItem("name" , name)
+}
+}
+username()
 
 function gameProgress(progress) {
     if (progress >0 ){
@@ -23,6 +34,7 @@ function gameProgress(progress) {
         progressElement.style.width = percentProgress +"%"
     }
 }
+
 
 
 function showResult(text, classElement) {
@@ -80,6 +92,12 @@ function checkSelection() {
 }
 
 btn.addEventListener('click', checkSelection);
+
+document.body.addEventListener("keydown" , (event)=> {
+    if (event.key == "Enter"){
+        checkSelection()
+    }
+})  
 
 function select() {
     let contains = this.classList.contains('active')

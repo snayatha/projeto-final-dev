@@ -73,7 +73,9 @@ body {
   background-color: var(--options-hover);
   transform: translateY(-1.5px);
 }
-
+.correct:hover{
+  background-color: chartreuse;
+}
 
 .active {
   color: var(--selecionado);
