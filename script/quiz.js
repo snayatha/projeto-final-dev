@@ -8,6 +8,17 @@ const progressElement = document.querySelector(".progress")
 let percentProgress = 0;
 let indexQuestion = 0;
 
+function select (e){
+    options.forEach((element) => {
+element.classList.remove("active")
+    })
+    this.classList.add("active")
+}
+
+options.forEach ((item) => {
+    item.addEventListener("click",select)
+})
+
 function questionList (){
     question.textContent = questions[indexQuestion].question
     options.forEach((item,index) => {
