@@ -1,6 +1,6 @@
 import questions from "./data.js"
 const options = document.querySelectorAll(".options")
-const btn = document.querySelector("#btnCheck")
+const btn = document.querySelector(".btnCheck")
 const question = document.querySelector("#question")
 const result = document.querySelector("#result")
 const score = document.querySelector(".score")
@@ -12,6 +12,7 @@ let correct = 'correct'
 let incorrect = 'incorrect'
 let active = 'active'
 let name = localStorage.getItem("name")
+let processing = false;
 
 
 function username() {
@@ -37,6 +38,7 @@ function showResult(text, classElement) {
     result.classList.add(classElement);
     result.textContent = text
 }
+
 
 function checkAnswer(value, element) {
     let response = value == questions[indexQuestion].answer;
@@ -74,33 +76,49 @@ function checkAnswer(value, element) {
     }
 }
 
+
 function checkSelection() {
+    btn.disabled = true
     let found = false;
     for (let i = 0; i < options.length; i++) {
         let contains = options[i].classList.contains(active);
         if (contains) {
             checkAnswer(options[i].getAttribute('value'), options[i])
+
             found = true;
             break;
         }
     }
-    if (!found) showResult('Selecione uma questão primeiro', 'alert')
+    if (!found) {
+        showResult('Selecione uma alternativa primeiro', 'alert')
+        btn.disabled = false
+    }
+
 }
 
 btn.addEventListener('click', checkSelection);
 
 document.body.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") checkSelection()
+    if (event.key === "Enter" && window.innerWidth > 600 && btn.disabled === false) {
+        checkSelection()
+    }
 })
 
+
 function select() {
-    let contains = this.classList.contains('active')
+    let contains = this.classList.contains(active)
     options.forEach((element) => element.classList.remove(active))
     if (!contains) {
         this.classList.add(active)
-        result.classList.remove('alert')
-        showResult('')
+        btn.classList.add('teste')
+    } else if (contains && window.innerWidth < 600) {
+        this.classList.add(active)
+        btn.classList.add('teste')
+    } else {
+        btn.classList.remove('teste')
     }
+    showResult('')
+    result.classList.remove('alert')
 }
 
 options.forEach((item) => item.addEventListener("click", select))
@@ -109,12 +127,15 @@ let shuffleArray = array => array.sort(() => Math.random() - 0.5)
 
 function questionList() {
     let arrayIndex = [0, 1, 2, 3];
+    btn.disabled = false
+    btn.classList.remove('teste')
     shuffleArray(arrayIndex);
 
     if (indexQuestion === 0) {
         shuffleArray(questions);
         percentProgress = 0;
         gameProgress(0)
+        showResult('')
     }
     score.textContent = `${indexQuestion}/${questions.length}`
     question.classList.add('hide');
@@ -124,7 +145,6 @@ function questionList() {
     }, 100);
     options.forEach((item, i) => {
         item.textContent = questions[indexQuestion].options[arrayIndex[i]];
-        console.log(questions[indexQuestion].options[arrayIndex[i]], arrayIndex[i])
         item.setAttribute('value', `${arrayIndex[i]}`);
         item.classList.remove(active)
     })
@@ -135,6 +155,8 @@ function startCounter() {
     let contador = 3;
     function updateCounter() {
         showResult(`Reiniciando quiz em ${contador}`);
+        score.textContent = `${contador}/${questions.length}`
+
         contador--;
         if (contador >= 0) {
             setTimeout(updateCounter, 1000);
@@ -142,5 +164,6 @@ function startCounter() {
     }
     updateCounter();
 }
+
 
 
