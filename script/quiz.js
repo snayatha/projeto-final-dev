@@ -14,28 +14,24 @@ let active = 'active'
 let name = localStorage.getItem("name")
 
 
-function username (){
-if (name ) user.textContent = `Jogador(a): ${name}`
-else {
-    name = prompt("Digite seu nome")
-    user.textContent = `Jogador(a): ${name}`
-    localStorage.setItem("name" , name)
-}
-}
-username()
-
-function gameProgress(progress) {
-    if (progress >0 ){
-        percentProgress += progress
-        progressElement.style.width = percentProgress +"%"
-
-    }else {
-        percentProgress = progress
-        progressElement.style.width = percentProgress +"%"
+function username() {
+    if (name) user.textContent = `Jogador(a): ${name}`
+    else {
+        name = prompt("Digite seu nome")
+        user.textContent = `Jogador(a): ${name}`
+        localStorage.setItem("name", name)
     }
 }
+setTimeout(username, 100)
 
-
+function gameProgress(progress) {
+    if (progress > 0) {
+        percentProgress += progress
+    } else {
+        percentProgress = progress
+    }
+    progressElement.style.width = percentProgress + "%"
+}
 
 function showResult(text, classElement) {
     result.classList.add(classElement);
@@ -48,14 +44,14 @@ function checkAnswer(value, element) {
         if (indexQuestion == questions.length - 1) {
             score.textContent = `${questions.length}/${questions.length}`;
             element.classList.add(correct);
-            showResult('Fim você ganhou');
+            showResult('Fim você ganhou', correct);
             indexQuestion = 0;
-            startCounter()
             gameProgress(20)
+            startCounter()
             setTimeout(() => {
                 showResult('');
+                result.classList.remove(correct)
                 element.classList.remove(correct);
-                user.textContent = '';
                 questionList()
             }, 4000)
         } else {
@@ -93,17 +89,13 @@ function checkSelection() {
 
 btn.addEventListener('click', checkSelection);
 
-document.body.addEventListener("keydown" , (event)=> {
-    if (event.key == "Enter"){
-        checkSelection()
-    }
-})  
+document.body.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") checkSelection()
+})
 
 function select() {
     let contains = this.classList.contains('active')
-    options.forEach((element) => {
-        element.classList.remove(active)
-    })
+    options.forEach((element) => element.classList.remove(active))
     if (!contains) {
         this.classList.add(active)
         result.classList.remove('alert')
@@ -113,7 +105,8 @@ function select() {
 
 options.forEach((item) => item.addEventListener("click", select))
 
-let shuffleArray = array => array.sort((a, b) => Math.random() - 0.5)
+let shuffleArray = array => array.sort(() => Math.random() - 0.5)
+
 function questionList() {
     let arrayIndex = [0, 1, 2, 3];
     shuffleArray(arrayIndex);
@@ -124,9 +117,14 @@ function questionList() {
         gameProgress(0)
     }
     score.textContent = `${indexQuestion}/${questions.length}`
-    question.textContent = questions[indexQuestion].question
+    question.classList.add('hide');
+    setTimeout(() => {
+        question.textContent = questions[indexQuestion].question
+        question.classList.remove('hide');
+    }, 100);
     options.forEach((item, i) => {
         item.textContent = questions[indexQuestion].options[arrayIndex[i]];
+        console.log(questions[indexQuestion].options[arrayIndex[i]], arrayIndex[i])
         item.setAttribute('value', `${arrayIndex[i]}`);
         item.classList.remove(active)
     })
@@ -135,14 +133,11 @@ questionList()
 
 function startCounter() {
     let contador = 3;
-
     function updateCounter() {
-        user.textContent = `Reiniciando quiz em ${contador}`;
+        showResult(`Reiniciando quiz em ${contador}`);
         contador--;
         if (contador >= 0) {
             setTimeout(updateCounter, 1000);
-        } else {
-            console.log("Contagem regressiva concluída!");
         }
     }
     updateCounter();

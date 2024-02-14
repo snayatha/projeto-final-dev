@@ -42,16 +42,21 @@ body {
   gap: 10px;
 }
 
-.options {
-  font-size: 20px;
-}
-
 #question {
   text-align: center;
   color: #240047;
   margin-left: 10px;
   margin-right: 10px;
-  transition: transform 0.9s ease;
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+#question.hide {
+  opacity: 0;
+}
+
+.options {
+  font-size: 20px;
 }
 
 .options {
@@ -73,9 +78,7 @@ body {
   background-color: var(--options-hover);
   transform: translateY(-1.5px);
 }
-.correct:hover{
-  background-color: chartreuse;
-}
+
 
 .active {
   color: var(--selecionado);
@@ -123,7 +126,6 @@ body {
   transition: width 0.5s ease;
 }
 
-
 .alert {
   background-color: red;
   border-radius: 10px;
@@ -131,16 +133,16 @@ body {
   color: white;
 }
 
-
-.correct {
+.correct,
+.correct:hover {
   background-color: chartreuse;
 }
 
-.incorrect {
+.incorrect,
+.incorrect:hover {
   background-color: red;
   color: white;
 }
-
 
 
 
