@@ -144,6 +144,7 @@ function questionList() {
         question.classList.remove('hide');
     }, 100);
     options.forEach((item, i) => {
+        item.style.display = ""
         item.textContent = questions[indexQuestion].options[arrayIndex[i]];
         item.setAttribute('value', `${arrayIndex[i]}`);
         item.classList.remove(active)
@@ -165,5 +166,16 @@ function startCounter() {
     updateCounter();
 }
 
+let clear = document.querySelector("#clear")
 
+clear.addEventListener("click", function () {
+    for (let i = 0; i < 2; i++) {
+        let aux = options[i].getAttribute('value') != questions[indexQuestion].answer
+        console.log(aux)
+        if (aux) {
+            options[i].style.display = "none"
+            break
+        }
+    }
+})
 
