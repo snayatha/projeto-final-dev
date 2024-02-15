@@ -5,15 +5,16 @@ const question = document.querySelector("#question")
 const result = document.querySelector("#result")
 const score = document.querySelector(".score")
 const progressElement = document.querySelector(".progress")
+const correct = 'correct'
+const incorrect = 'incorrect'
+const active = 'active'
+const btnEnabled = 'btnEnabled'
+const user = document.querySelector('#user');
 let percentProgress = 0;
-let user = document.querySelector('#user');
 let indexQuestion = 0;
-let correct = 'correct'
-let incorrect = 'incorrect'
-let active = 'active'
-let name = localStorage.getItem("name")
-let processing = false;
-
+let name = localStorage.getItem("name");
+let clear = document.querySelector("#btnClear")
+let btnClear = false;
 
 function username() {
     if (name) user.textContent = `Jogador(a): ${name}`
@@ -44,7 +45,7 @@ function checkAnswer(value, element) {
     let response = value == questions[indexQuestion].answer;
     if (response) {
         if (indexQuestion == questions.length - 1) {
-            score.textContent = `${questions.length}/${questions.length}`;
+            // score.textContent = `${questions.length}/${questions.length}`;
             element.classList.add(correct);
             showResult('Fim você ganhou', correct);
             indexQuestion = 0;
@@ -110,37 +111,38 @@ function select() {
     options.forEach((element) => element.classList.remove(active))
     if (!contains) {
         this.classList.add(active)
-        btn.classList.add('teste')
+        btn.classList.add(btnEnabled)
     } else if (contains && window.innerWidth < 600) {
         this.classList.add(active)
-        btn.classList.add('teste')
+        btn.classList.add(btnEnabled)
     } else {
-        btn.classList.remove('teste')
+        btn.classList.remove(btnEnabled)
     }
     showResult('')
     result.classList.remove('alert')
 }
 
-options.forEach((item) => item.addEventListener("click", select))
+options.forEach(item => item.addEventListener("click", select))
 
 let shuffleArray = array => array.sort(() => Math.random() - 0.5)
 
 function questionList() {
     let arrayIndex = [0, 1, 2, 3];
-    btn.disabled = false
-    btn.classList.remove('teste')
     shuffleArray(arrayIndex);
+    btn.disabled = false
+    btn.classList.remove(btnEnabled)
 
     if (indexQuestion === 0) {
         shuffleArray(questions);
-        percentProgress = 0;
         gameProgress(0)
         showResult('')
+        // clear.disabled = false
+        clear.style.display = ''
     }
-    score.textContent = `${indexQuestion}/${questions.length}`
+    // score.textContent = `${indexQuestion}/${questions.length}`
     question.classList.add('hide');
     setTimeout(() => {
-        question.textContent = questions[indexQuestion].question
+        question.textContent = `${indexQuestion + 1}. ${questions[indexQuestion].question}`
         question.classList.remove('hide');
     }, 100);
     options.forEach((item, i) => {
@@ -156,26 +158,28 @@ function startCounter() {
     let contador = 3;
     function updateCounter() {
         showResult(`Reiniciando quiz em ${contador}`);
-        score.textContent = `${contador}/${questions.length}`
-
+        // score.textContent = `${contador}/${questions.length}`
         contador--;
-        if (contador >= 0) {
-            setTimeout(updateCounter, 1000);
-        }
+        if (contador >= 0) setTimeout(updateCounter, 1000);
     }
     updateCounter();
 }
 
-let clear = document.querySelector("#clear")
-
-clear.addEventListener("click", function () {
+clear.addEventListener("click", () => {
+    let numbers = [0, 1, 2, 3];
+    shuffleArray(numbers);
     for (let i = 0; i < 2; i++) {
-        let aux = options[i].getAttribute('value') != questions[indexQuestion].answer
-        console.log(aux)
+        let aux = options[numbers[i]].getAttribute('value') != questions[indexQuestion].answer
         if (aux) {
-            options[i].style.display = "none"
+            options[numbers[i]].style.display = "none"
+            clear.style.display = 'none'
             break
         }
     }
 })
 
+
+
+
+
+// alert(window.innerWidth)
