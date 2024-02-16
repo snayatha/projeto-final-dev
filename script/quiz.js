@@ -65,12 +65,10 @@ function endgame(display1, display2, msgTitle) {
     title.textContent = msgTitle
 }
 
-
 function checkAnswer(value, element) {
     let response = value == questions[indexQuestion].answer;
     if (response) {
         if (indexQuestion == questions.length - 1) {
-            // score.textContent = `${questions.length}/${questions.length}`;
             element.classList.add(correct);
             indexQuestion = 0;
             gameProgress(20)
@@ -162,7 +160,6 @@ function questionList() {
         img.classList.remove('teste')
 
     }
-    // score.textContent = `${indexQuestion}/${questions.length}`
     question.classList.add('hide');
     setTimeout(() => {
         question.textContent = `${indexQuestion + 1}. ${questions[indexQuestion].question}`
@@ -181,7 +178,6 @@ function startCounter() {
     let contador = 3;
     function updateCounter() {
         showResult(`Reiniciando quiz em ${contador}`);
-        // score.textContent = `${contador}/${questions.length}`
         contador--;
         if (contador >= 0) setTimeout(updateCounter, 1000);
         else showResult('')
