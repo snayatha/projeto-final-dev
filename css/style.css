@@ -141,9 +141,6 @@ header ul li a:hover {
 }
 
 @media (min-width:401px) and (max-width: 600px){
-    body{
-
-    }
 
     #header ul li{
         font-size: 3rem;

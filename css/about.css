@@ -135,10 +135,7 @@ body {
 }
 
 @media (min-width:401px) and (max-width: 600px){
-    body{
-
-    }
-
+    
     #header ul li{
         font-size: 1.5rem;
         font-style: bold;
