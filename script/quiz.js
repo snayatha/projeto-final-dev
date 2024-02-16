@@ -204,7 +204,6 @@ btnDeleteAlternative.addEventListener("click", () => {
     }
 })
 
-
 function btnDisabled(boolean, ...nums) {
     nums.forEach(button => button.disabled = boolean)
 }
