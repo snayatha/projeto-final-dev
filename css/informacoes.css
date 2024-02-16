@@ -2,12 +2,14 @@ html {
     font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
     max-width: 100%;
     overflow-x: hidden;
+    width: 100%;
+    font-size: 62.5%;
 }
 
 #header
 {
     width: 100%;
-    height: 110px;
+    height: 11rem;
     background-color: #ae58ff;
     padding: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -26,20 +28,19 @@ ul {
 header ul li a {
     text-decoration: none; 
     color: black; 
-    font-size: 30px;
+    font-size: 3rem;
 }
 
 header ul li a:hover {
-    font-size: 35px;
+    font-size: 3.5rem;
     color: white;
 }
 
-
 ul li {
-margin-right: 50px;
-margin-left: 50px;
+    margin-right: 5rem;
+    margin-left: 5rem;
 }
-
+    
 li {
     list-style-type: none;
 
@@ -59,10 +60,10 @@ body {
 
 .texto {
     text-align: center;
-    font-size: 20px;
+    font-size: 2rem;
     line-height: 1.5;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 15rem;
+    margin-right: 15rem;
     overflow-wrap: break-word;
     text-align: justify;
     text-indent: 2em;
@@ -70,55 +71,23 @@ body {
 
 .texto2 {
     text-align: center;
-    font-size: 30px;
+    font-size: 3rem;
     line-height: 1.5;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 15rem;
+    margin-right: 15rem;
     overflow-wrap: break-word;
     text-align: justify;
     text-indent: 2em;
 }
 
 .titulo {
-    font-size: 35px;
+    font-size: 3.5rem;
     color: white;
     justify-content: center;
     display: flex;
-    margin-top: 130px;
-    margin-bottom: 100px;
+    margin-top: 13rem;
+    margin-bottom: 10rem;
     font-weight: bold;
-}
-
-#footer {
-    background-color: #2c0055;
-    color: white;
-    padding: 20px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 100px;
-}
-
-#footer ul {
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li a {
-    text-decoration: none; 
-    color: white; 
-    font-size: 30px;
-    display: inline-block;
-    margin: 0 10px;
-}
-
-footer ul li a:hover {
-    font-size: 35px;
 }
 
 #botao {
@@ -126,3 +95,29 @@ footer ul li a:hover {
 }
 
 
+@media (min-width:401px) and (max-width: 600px){
+
+    #header ul li{
+        font-size: 3rem;
+        font-style: bold;
+    }
+
+    #header ul li a{
+        color: #fff;
+    }
+    .titulo {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+    }
+    ul li {
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+    header ul li a {
+        text-decoration: none; 
+        color: black; 
+        font-size: 2rem;
+    }
+
+}

@@ -4,6 +4,12 @@ html {
     padding: 0;
 }
 
+#header
+{
+    width: 100%;
+    height: 11rem;
+}
+
 body {
     background: linear-gradient(to bottom right, #240047, #6c067a);
     width: 100vw;
@@ -30,13 +36,13 @@ body {
 header ul {
     display: flex;
     flex-direction: row;
-    gap: 2rem;   
+    gap: 6rem;   
 }
 
 header ul li {
     list-style-type: none;
-    color: black;
-    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-size: 3rem;
 }
 
 a{
@@ -47,9 +53,6 @@ header ul li a:hover {
     font-size: 3.5rem;
     color: white;
 }
-
-
-
 
 .content{
     display: flex;
@@ -69,16 +72,16 @@ header ul li a:hover {
 
 .btn {
     display: inline-block;
-    padding: 50px 50px;
+    padding: 5rem 5rem;
     color: white;
     background-color: transparent;
-    border-radius: 30px;
+    border-radius: 3rem;
     border: solid white;
     font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     transition: 0.3s ease;
     transition-property: background-color, color;
     text-decoration: none;
@@ -111,12 +114,12 @@ header ul li a:hover {
 .container-button {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 3rem;
 }
 
 .btn:hover {
     color: transparent;
-    padding: 50px 50px;
+    padding: 5rem 5rem;
 }
 
 .titulo {
@@ -128,7 +131,7 @@ header ul li a:hover {
 }
 
 .titulo2 {
-    font-size: 35px;
+    font-size: 3.5rem;
     color: white;
     text-align: center;
 }
@@ -138,9 +141,6 @@ header ul li a:hover {
 }
 
 @media (min-width:401px) and (max-width: 600px){
-    body{
-
-    }
 
     #header ul li{
         font-size: 3rem;
