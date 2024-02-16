@@ -3,6 +3,7 @@ html {
     max-width: 100%;
     overflow-x: hidden;
 }
+
 #header
 {
     width: 100%;
@@ -113,6 +114,7 @@ body {
     justify-content: center;
     margin-top: 30px;
 }
+
 .btn:hover {
     color: transparent;
     padding: 50px 50px;
