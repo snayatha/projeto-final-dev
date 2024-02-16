@@ -22,7 +22,11 @@ let option = document.querySelector('#option')
 function username() {
     if (name) user.textContent = `Jogador(a): ${name}`
     else {
-        name = prompt("Digite seu nome")
+        name = prompt("Digite o seu nome")
+        while (name == false || name == null) {
+            name = prompt("Inválido! Digite o seu nome")
+
+        }
         user.textContent = `Jogador(a): ${name}`
         localStorage.setItem("name", name)
     }
@@ -158,7 +162,6 @@ function questionList() {
         showResult('')
         endgame('none', 'inline-block', 'quiz')
         img.classList.remove('teste')
-
     }
     question.classList.add('hide');
     setTimeout(() => {
