@@ -72,38 +72,6 @@ body {
     text-indent: 2em;
 }
 
-#footer {
-    background-color: #2c0055;
-    color: white;
-    padding: 2rem;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 10rem;
-}
-
-#footer ul {
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li a {
-    text-decoration: none; 
-    color: white; 
-    font-size: 3rem;
-    display: inline-block;
-    margin: 0 1rem;
-}
-
-footer ul li a:hover {
-    font-size: 3.5rem;
-}
-
 .box-informacao {
     width: 17.5rem;
     height: 40rem;
@@ -164,4 +132,26 @@ footer ul li a:hover {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+@media (min-width:401px) and (max-width: 600px){
+    body{
+
+    }
+
+    #header ul li{
+        font-size: 1.5rem;
+        font-style: bold;
+    }
+
+    #header ul li a{
+        color: #fff;
+    }
+    .conteiner {
+        flex-direction: column;
+    }
+    .box-informacao{
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+    }
 }

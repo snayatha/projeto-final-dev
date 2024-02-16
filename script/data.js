@@ -1,27 +1,29 @@
 export default [
   {
-    question: "Qual jogador é conhecido como 'O Fenômeno'?",
-    options: ["Ronaldinho Gaúcho", "Lionel Messi", "Cristiano Ronaldo", "Ronaldo Nazário"],
+    question: "Em que período da pré-história o fogo foi descoberto?",
+    options: ["Neolítico", "Paleolítico", "Idade dos Metais", "Período da Pedra Polida"],
+    answer: 1
+  },
+  {
+    question: "De quem é a famosa frase 'Penso, logo existo'?",
+    options: ["Platão", "Galileu", "Sócrates", "Descartes"],
     answer: 3
   },
   {
-    question: "Qual clube ganhou mais títulos da Liga dos Campeões da UEFA até 2022?",
-    options: ["Real Madrid", "FC Barcelona", "Bayern de Munique", "Liverpool"],
+    question: "Que substância é absorvida pelas plantas e expirada por todos os seres vivos?",
+    options: ["o oxigênio", "o nitrogênio", "o dióxido de ferro", "o dióxido de carbono"],
+    answer: 3
+  },
+  {
+    question: "Qual é o maior planeta do sistema solar?",
+    options: ["Júpiter", "Saturno", "Terra", "Urano"],
     answer: 0
   },
   {
-    question: "Quem é o maior artilheiro da história da Copa do Mundo?",
-    options: ["Pelé", "Lionel Messi", "Cristiano Ronaldo", "Miroslav Klose"],
-    answer: 3
+    question: "Qual é o maior oceano do mundo?",
+    options: ["Oceano Atlântico", "Oceano Pacífico", "Oceano Índico", "Oceano Ártico"],
+    answer: 1
   },
-  {
-    question: "Qual país venceu a Copa do Mundo de 2018?",
-    options: ["Alemanha", "Brasil", "Argentina", "França"],
-    answer: 3
-  },
-  {
-    question: "Quem é o técnico da Seleção Brasileira de Futebol em 2022?",
-    options: ["Tite", "Felipão", "Dunga", "Mano Menezes"],
-    answer: 0
-  }
+
 ];
+

@@ -90,40 +90,37 @@ body {
     font-weight: bold;
 }
 
-#footer {
-    background-color: #2c0055;
-    color: white;
-    padding: 2rem;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 10rem;
-}
-
-#footer ul {
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li a {
-    text-decoration: none; 
-    color: white; 
-    font-size: 3rem;
-    display: inline-block;
-    margin: 0 1rem;
-}
-
-footer ul li a:hover {
-    font-size: 3.5rem;
-}
-
 #botao {
    color: white;
 }
 
 
+@media (min-width:401px) and (max-width: 600px){
+    body{
+
+    }
+
+    #header ul li{
+        font-size: 3rem;
+        font-style: bold;
+    }
+
+    #header ul li a{
+        color: #fff;
+    }
+    .titulo {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+    }
+    ul li {
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+    header ul li a {
+        text-decoration: none; 
+        color: black; 
+        font-size: 2rem;
+    }
+
+}

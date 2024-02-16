@@ -9,12 +9,15 @@ const correct = 'correct'
 const incorrect = 'incorrect'
 const active = 'active'
 const btnEnabled = 'btnEnabled'
+const title = document.querySelector('#title');
 const user = document.querySelector('#user');
+let img = document.querySelector('.victory img')
 let percentProgress = 0;
 let indexQuestion = 0;
 let name = localStorage.getItem("name");
-let clear = document.querySelector("#btnClear")
-let btnClear = false;
+let btnDeleteAlternative = document.querySelector("#btnClean")
+let btnRestart = document.querySelector('#restart');
+let option = document.querySelector('#option')
 
 function username() {
     if (name) user.textContent = `Jogador(a): ${name}`
@@ -40,6 +43,28 @@ function showResult(text, classElement) {
     result.textContent = text
 }
 
+function restart() {
+    startCounter()
+    btnDisabled(true, btnRestart)
+    setTimeout(() => {
+        showResult('');
+        img.style.display = 'none';
+        img.classList.remove('teste')
+        questionList()
+    }, 3000)
+}
+btnRestart.addEventListener('click', restart)
+
+function endgame(display1, display2, msgTitle) {
+    img.style.display = display1
+    btnRestart.style.display = display1
+    btn.style.display = display2
+    btnDeleteAlternative.style.display = display2
+    option.style.display = display2
+    question.style.display = display2
+    title.textContent = msgTitle
+}
+
 
 function checkAnswer(value, element) {
     let response = value == questions[indexQuestion].answer;
@@ -47,16 +72,14 @@ function checkAnswer(value, element) {
         if (indexQuestion == questions.length - 1) {
             // score.textContent = `${questions.length}/${questions.length}`;
             element.classList.add(correct);
-            showResult('Fim você ganhou', correct);
             indexQuestion = 0;
             gameProgress(20)
-            startCounter()
             setTimeout(() => {
-                showResult('');
-                result.classList.remove(correct)
+                img.classList.add('teste')
+                endgame('inline-block', 'none', '   você ganhou!')
                 element.classList.remove(correct);
-                questionList()
-            }, 4000)
+            }, 1000);
+
         } else {
             element.classList.add(correct);
             setTimeout(() => {
@@ -77,9 +100,8 @@ function checkAnswer(value, element) {
     }
 }
 
-
 function checkSelection() {
-    btn.disabled = true
+    btnDisabled(true, btn)
     let found = false;
     for (let i = 0; i < options.length; i++) {
         let contains = options[i].classList.contains(active);
@@ -92,7 +114,7 @@ function checkSelection() {
     }
     if (!found) {
         showResult('Selecione uma alternativa primeiro', 'alert')
-        btn.disabled = false
+        btnDisabled(false, btn)
     }
 
 }
@@ -129,15 +151,16 @@ let shuffleArray = array => array.sort(() => Math.random() - 0.5)
 function questionList() {
     let arrayIndex = [0, 1, 2, 3];
     shuffleArray(arrayIndex);
-    btn.disabled = false
-    btn.classList.remove(btnEnabled)
+    btnDisabled(false, btnRestart, btn)
+    btn.classList.remove(btnEnabled, 'solo')
 
     if (indexQuestion === 0) {
         shuffleArray(questions);
         gameProgress(0)
         showResult('')
-        // clear.disabled = false
-        clear.style.display = ''
+        endgame('none', 'inline-block', 'quiz')
+        img.classList.remove('teste')
+
     }
     // score.textContent = `${indexQuestion}/${questions.length}`
     question.classList.add('hide');
@@ -161,25 +184,28 @@ function startCounter() {
         // score.textContent = `${contador}/${questions.length}`
         contador--;
         if (contador >= 0) setTimeout(updateCounter, 1000);
+        else showResult('')
     }
     updateCounter();
+
 }
 
-clear.addEventListener("click", () => {
+btnDeleteAlternative.addEventListener("click", () => {
     let numbers = [0, 1, 2, 3];
     shuffleArray(numbers);
     for (let i = 0; i < 2; i++) {
         let aux = options[numbers[i]].getAttribute('value') != questions[indexQuestion].answer
         if (aux) {
             options[numbers[i]].style.display = "none"
-            clear.style.display = 'none'
+            btnDeleteAlternative.style.display = 'none'
+            btn.classList.add('solo')
             break
         }
     }
 })
 
+function btnDisabled(boolean, ...nums) {
+    nums.forEach(button => button.disabled = boolean)
+}
 
 
-
-
-// alert(window.innerWidth)
