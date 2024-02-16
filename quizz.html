@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/quizz.css">
   <script src="script/quiz.js" defer type="module"></script>
-  <title>Quiz</title>
+  <title>Document</title>
 </head>
 
 <body>
@@ -18,32 +18,36 @@
         <div class="progress"></div>
       </div>
       <h2 id="question"></h2>
-      <nav>
-        <ul id="option">
-          <li>
-            <span class="options"></span>
-          </li>
-          <li>
-            <span class="options"></span>
-          </li>
-          <li>
-            <span class="options"></span>
-          </li>
-          <li>
-            <span class="options"></span>
-          </li>
-        </ul>
-      </nav>
+      <div class="victory">
+        <img src="imgs/gifs-de-foguete-3.gif" alt="">
+      </div>
+      <ul id="option">
+        <li>
+          <span class="options"></span>
+        </li>
+        <li>
+          <span class="options"></span>
+        </li>
+        <li>
+          <span class="options"></span>
+        </li>
+        <li>
+          <span class="options"></span>
+        </li>
+      </ul>
       <article>
-        <h3 id="result"></h3>
+        <h2 id="result"></h2>
       </article>
       <div class="buttons">
-        <button id="btnClear">Excluir alternativa</button>
-        <button class="btnCheck">Verficar Resposta</button>
+        <button id="btnClean">Excluir uma</button>
+        <button class="btnCheck">Confirmar</button>
+        <button id="restart">Reiniciar</button>
       </div>
       <span id="user"></span>
     </section>
   </main>
+
+
 </body>
 
 </html>

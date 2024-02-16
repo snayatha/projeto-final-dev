@@ -45,10 +45,10 @@ function showResult(text, classElement) {
 
 function restart() {
     startCounter()
+    btnDisabled(true, btnRestart)
     setTimeout(() => {
         showResult('');
         img.style.display = 'none';
-        result.classList.remove(correct)
         img.classList.remove('teste')
         questionList()
     }, 3000)
@@ -62,7 +62,7 @@ function endgame(display1, display2, msgTitle) {
     btnDeleteAlternative.style.display = display2
     option.style.display = display2
     question.style.display = display2
-    title.textContent = msgTitle;
+    title.textContent = msgTitle
 }
 
 
@@ -72,12 +72,11 @@ function checkAnswer(value, element) {
         if (indexQuestion == questions.length - 1) {
             // score.textContent = `${questions.length}/${questions.length}`;
             element.classList.add(correct);
-            // showResult('Fim você ganhou', correct);
             indexQuestion = 0;
             gameProgress(20)
             setTimeout(() => {
                 img.classList.add('teste')
-                endgame('inline-block', 'none', 'Parabéns, você ganhou!')
+                endgame('inline-block', 'none', '   você ganhou!')
                 element.classList.remove(correct);
             }, 1000);
 
@@ -102,7 +101,7 @@ function checkAnswer(value, element) {
 }
 
 function checkSelection() {
-    btn.disabled = true
+    btnDisabled(true, btn)
     let found = false;
     for (let i = 0; i < options.length; i++) {
         let contains = options[i].classList.contains(active);
@@ -115,7 +114,7 @@ function checkSelection() {
     }
     if (!found) {
         showResult('Selecione uma alternativa primeiro', 'alert')
-        btn.disabled = false
+        btnDisabled(false, btn)
     }
 
 }
@@ -152,8 +151,8 @@ let shuffleArray = array => array.sort(() => Math.random() - 0.5)
 function questionList() {
     let arrayIndex = [0, 1, 2, 3];
     shuffleArray(arrayIndex);
-    btn.disabled = false
-    btn.classList.remove(btnEnabled)
+    btnDisabled(false, btnRestart, btn)
+    btn.classList.remove(btnEnabled, 'solo')
 
     if (indexQuestion === 0) {
         shuffleArray(questions);
@@ -199,7 +198,15 @@ btnDeleteAlternative.addEventListener("click", () => {
         if (aux) {
             options[numbers[i]].style.display = "none"
             btnDeleteAlternative.style.display = 'none'
+            btn.classList.add('solo')
             break
         }
     }
 })
+
+
+function btnDisabled(boolean, ...nums) {
+    nums.forEach(button => button.disabled = boolean)
+}
+
+

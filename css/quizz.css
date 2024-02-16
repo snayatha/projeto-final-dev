@@ -115,7 +115,6 @@ body {
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-
 }
 
 #btnClean {
@@ -126,12 +125,21 @@ body {
   background-color: #1c3166;
 }
 
+.btnCheck.solo{
+  padding: 2rem 5rem;
+}
+
 .btnCheck.btnEnabled {
   background-color: #015199;
 }
 
 #restart {
   display: none;
+  padding: 2rem 5rem;
+}
+
+#restart:hover {
+  background-color: #015199;
 }
 
 .score {
